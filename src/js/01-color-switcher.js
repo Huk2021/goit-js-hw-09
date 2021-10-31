@@ -12,17 +12,20 @@ refs.stopBtn.addEventListener('click', onStopBtnClick)
 
 let intervalId = null;
 
+refs.stopBtn.setAttribute('disabled', true);
+
+
 function onStartBtnClick() {
     intervalId = setInterval(
         () => {
             document.body.style.backgroundColor = getRandomHexColor();
         }, 1000);
-    refs.startBtn.setAttribute('disabled', true);
     refs.stopBtn.removeAttribute('disabled')
+    refs.startBtn.setAttribute('disabled', true);
 }
     
 function onStopBtnClick() {
     clearInterval(intervalId);
     refs.startBtn.removeAttribute('disabled')
-     refs.stopBtn.setAttribute('disabled', true);
+    refs.stopBtn.setAttribute('disabled', true);
 }
