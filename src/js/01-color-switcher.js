@@ -18,10 +18,11 @@ function onStartBtnClick() {
             document.body.style.backgroundColor = getRandomHexColor();
         }, 1000);
     refs.startBtn.setAttribute('disabled', true);
+    refs.stopBtn.removeAttribute('disabled')
 }
     
 function onStopBtnClick() {
     clearInterval(intervalId);
     refs.startBtn.removeAttribute('disabled')
-    
+     refs.stopBtn.setAttribute('disabled', true);
 }
