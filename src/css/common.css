@@ -44,7 +44,7 @@ img {
   width: 200px;
   height: 30px;
   border-color: #afb1b8;
-  border-radius: 4px;
+  border-radius: 3px;
   font-size: 18px;
 }
 
@@ -53,4 +53,5 @@ img {
   width: 60px;
   text-align: center;
   font-size: 18px;
+  border-radius: 3px;
 }

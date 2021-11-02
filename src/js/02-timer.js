@@ -51,8 +51,6 @@ function onStartBtnClick() {
     refs.startBtn.setAttribute('disabled', true);
 }
 
-
-
 function convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;
@@ -71,7 +69,6 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
-
 
 function addLeadingZero(value) {
   return String(value).padStart(2, 0);
