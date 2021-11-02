@@ -47,7 +47,8 @@ function onStartBtnClick() {
     refs.spanHours.innerHTML = addLeadingZero(hours);
     refs.spanMinutes.innerHTML = addLeadingZero(minutes);
     refs.spanSeconds.innerHTML = addLeadingZero(seconds);
-     }, 1000)
+    }, 1000)
+    refs.startBtn.setAttribute('disabled', true);
 }
 
 
