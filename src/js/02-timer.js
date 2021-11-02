@@ -48,7 +48,6 @@ function onStartBtnClick() {
     refs.spanMinutes.innerHTML = addLeadingZero(minutes);
     refs.spanSeconds.innerHTML = addLeadingZero(seconds);
      }, 1000)
-
 }
 
 
