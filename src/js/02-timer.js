@@ -11,7 +11,7 @@ const refs = {
 }
 
 let selectedDate = null;
-let currentDate = null;
+let intervalId = null;
 
 refs.startBtn.setAttribute('disabled', true);
 
@@ -23,8 +23,8 @@ flatpickr('#datetime-picker', {
   onClose(selectedDates) {
       console.log(selectedDates[0]);
       selectedDate = selectedDates[0];
-      currentDate = new Date();
-if(selectedDate.getTime() < currentDate.getTime()){
+      
+if(selectedDate.getTime() < new Date().getTime()){
             Notify.failure('Please choose a date in the future');
               refs.startBtn.setAttribute('disabled', true)
             return;
@@ -33,8 +33,26 @@ if(selectedDate.getTime() < currentDate.getTime()){
     },
 });
 
+refs.startBtn.addEventListener('click', onStartBtnClick)
 
- 
+function onStartBtnClick() {
+    
+    intervalId = setInterval(() => {
+        if (selectedDate <= Date.now()) {
+            clearInterval(intervalId);
+            return;
+        }
+    const { days, hours, minutes, seconds } = convertMs(selectedDate - new Date().getTime());
+    refs.spanDays.innerHTML = addLeadingZero(days);
+    refs.spanHours.innerHTML = addLeadingZero(hours);
+    refs.spanMinutes.innerHTML = addLeadingZero(minutes);
+    refs.spanSeconds.innerHTML = addLeadingZero(seconds);
+     }, 1000)
+
+}
+
+
+
 function convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;
@@ -55,5 +73,7 @@ function convertMs(ms) {
 }
 
 
-
+function addLeadingZero(value) {
+  return String(value).padStart(2, 0);
+}
 
